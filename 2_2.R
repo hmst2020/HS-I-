@@ -1,33 +1,33 @@
-library(jsonlite) # 載入一般json處理套件
+library(jsonlite)
 dns.list <- read_json(
   path='https://www.twnic.net.tw/dnjson.txt',
-  simplifyVector = TRUE # 將多層list資料簡化為vector及data frame
+  simplifyVector = TRUE
 )
-dns.df <-as.data.frame(# 將dns.list轉成data frame資料物件
-  x=dns.list$com.tw # 本例針對com.tw分析
+dns.df <-as.data.frame(
+  x=dns.list$com.tw
 ) 
-names(dns.df) <- c('ym','count') # 重新命名dns.df
-head(dns.df) # 列出前幾筆
-tail(dns.df) # 列出最後幾筆
-y.df <- aggregate( # 使用聚集函式
-  formula=count~ substr(ym,1,4), # 依年度的數量處理
-  data=dns.df[dns.df$ym<202001,], # 本書於2020二月出版當年資料尚未完整
-  FUN=sum # 依年度加總
+names(dns.df) <- c('ym','count')
+head(dns.df)
+tail(dns.df)
+y.df <- aggregate(
+  formula=count~ substr(ym,1,4),
+  data=dns.df[dns.df$ym<202001,],
+  FUN=sum
 ) 
 names(y.df) <- c('year','count')
 library(ggplot2)
-p<-ggplot( # 產生繪圖物件
-  data=y.df, # 繪圖資料
+p<-ggplot(
+  data=y.df,
   mapping=aes(
-    x=year, y=count, # 指定x、y軸對應data(y.df)資料
-    group = 1 # geom_path 之group為必要欄位
+    x=year, y=count,
+    group = 1
   ))+ 
-  ggtitle('域名(com.tw)申請趨勢')+ # 圖標題
-  xlab('西元年')+ylab('申請數量')+  # 給予xy軸標籤
-  geom_point()+ # 畫出各點點狀圖
-  geom_path()+  # 疊加畫出各點連線
-  scale_x_discrete(limits=y.df$year)+  # 指定 x軸各值標示
-  scale_y_continuous(  # y軸為計量值之尺規標示
-    breaks=seq(min(y.df$count),max(y.df$count),by=500000))+  # 指定尺規標示值
-  theme(axis.text.x = element_text(angle=60, hjust=1)) # 調整x軸標示文字旋轉及橫向位移
-print(p)  #將軌跡圖印出
+  ggtitle('域名(com.tw)申請趨勢')+
+  xlab('西元年')+ylab('申請數量')+
+  geom_point()+
+  geom_path()+
+  scale_x_discrete(limits=y.df$year)+
+  scale_y_continuous(
+    breaks=seq(min(y.df$count),max(y.df$count),by=500000))+
+  theme(axis.text.x = element_text(angle=60, hjust=1))
+print(p)
