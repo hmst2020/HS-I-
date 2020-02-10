@@ -1,2 +1,2 @@
-# HS-I-
-R Programming and its applications in Management Science
+# Topics
+R 語言在管理領域的應用(I)
