@@ -30,7 +30,21 @@ R 語言在管理領域的應用(I)
 	
 	第8章  流程分析、資料分析工具
 	
+		[實例一]餐廳的經理關心顧客抱怨
+		
+		[實例二]連接器(Connector)製程能力樣本檢測數據
+		
+		[實例三]班機起飛延遲分析(Analysis of Flight Departure Delays)
+		
+		[實例四]始祖鳥(Archaeopteryx) 的股骨和肱骨
+	
 	第9章  學習曲線
+	
+		[實例一]單一學習曲線
+		
+		[實例二]多學習率的比較
+		
+		[實例三]學習曲線應用到心臟移植死亡率(heart transplant mortality)
 	
 	第10章  敘述統計學(descriptive statistics) 與 機率分配(Probability Distribution)
 	
