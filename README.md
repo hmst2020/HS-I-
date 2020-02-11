@@ -38,6 +38,16 @@ R 語言在管理領域的應用(I)
 	
 		[實例一]使用平均數(X-bar)和全距(R)管制圖來監控製程
 		
+		[實例二]使用不良率管制圖監控程序
+		
+		[實例三]使用缺點數管制圖來監控每單位缺點數
+		
+		[實例四]缺點數管制圖(c-chart) :豪華酒店套房檢查
+		
+		[實例五]評估加護病房實驗室的製程能力( Assessing the process Capability of the Intensive Care Unit Lab)
+		
+		[實例六]連接器(connector)製程能力樣本檢測數據
+		
 # 目錄
 data : 資料目錄
 
