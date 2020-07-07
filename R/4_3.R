@@ -1,3 +1,4 @@
+############ 轉碼加密(encode) ##################
 target.str <- "SEPTEMBER IS OKAY" # 加密目標字串
 A <- matrix( # 叫用內建函式建構3x3 的加密矩陣物件
   data=c(1,0,0, 
@@ -46,3 +47,18 @@ for (i in 1:length(str.vector)){ # 將分組之目標字串vector依序加密
   result<- c(result,encode.f(str.vector[i])[,1]) # 加密後併入本例加密結果
 }
 print(result) # 印出本例加密結果
+
+############ 解碼(decode) ##################
+decode.f<- function(B){ # 宣告自訂解碼函式 參數B為加密vector
+  inverse.A <- solve(A) # 上述A 之反矩陣
+  LETTERS[(inverse.A %*%B)[,1]]  # 反矩陣與B相乘結果對應大寫字母
+}
+
+resultd <- c() # 宣告本例解碼結果初始值
+for(i in 1:length(sec.pos)){ 
+  x <- result[ # 擷取前述加密結果一組dim.A 個數字
+    sec.pos[i]:(sec.pos[i]+dim.A-1)
+    ] 
+  resultd<- c(resultd,decode.f(matrix(x))) # 解碼後併入本例解碼結果
+}
+print(paste0(resultd, collapse = '')) # 將結果的vector 併成文字字串
