@@ -41,12 +41,6 @@ ts.year <- ts(   # 叫用內建函式ts建構時間序列物件
   frequency=1       # 每年幾筆資料(費用)
 )
 library(forecast)   # 載入函式庫forecast
-least.sqr <-tslm(   # 叫用forcast::tslm 時間序列線性回歸模型
-  formula=ts.year ~ trend   # 公式依據每年費用及簡單之時間趨勢(time trend)影響
-)
-intercept <- least.sqr$coefficients[1] # 線之截距
-slope <- least.sqr$coefficients[2] # 線之斜率
-print(summary(least.sqr))   # 列印完整的回歸分析
 fcst <- forecast( # 叫用forecast函式建構預測物件
   object=ts.year,  # 預測之實際資料依據
   level = c(80,95), # 給予不同的信心水準範圍
@@ -60,6 +54,12 @@ plot( # 使用內建函式plot 繪圖
   ylab='Expense', # y軸標籤
   main="年度與健康照護費用支付的散佈圖" # 圖標題
 )
+least.sqr <-tslm(   # 叫用forcast::tslm 時間序列線性回歸模型
+  formula=ts.year ~ trend   # 公式依據每年費用及簡單之時間趨勢(time trend)影響
+)
+intercept <- least.sqr$coefficients[1] # 線之截距
+slope <- least.sqr$coefficients[2] # 線之斜率
+print(summary(least.sqr))   # 列印完整的回歸分析
 print(paste0('forecast Y2020 : ', # 印出依線性模式推估2020年的可能費用
              intercept+slope*8)
 )
