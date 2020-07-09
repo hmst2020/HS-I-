@@ -53,17 +53,6 @@ set.column( # 同上
   lprec,    # 同上
   column=2, # 此model第二欄
   x=c(1,3,0,1) # 同上
-) 
-set.objfn(  # 設定model的目標函數，函式說明請參閱附錄A
-  lprec,    # 此model物件
-  c(1,1.2)  # 目標函數各係數
-)
-# 給予各條件名稱
-rownames <- c('machine1', 'machine2','productA','productB')
-colnames <- c("productA", "productB") # 給予各係數名稱
-dimnames(lprec) <- list( # 將model變數欄及條件欄重新命名，方便閱讀
-  rownames,   
-  colnames
 )
 set.constr.value( # 設定限制值(Right Hand Side)，函式說明請參閱附錄A
   lprec, # 此model物件
@@ -75,6 +64,18 @@ set.constr.type( # 設定限制型態(方向)，函式說明請參閱附錄A
   types=c("<=", "<=", ">=",">="), # 限制型態(方向)
   constraints=1:4   # 四個限制條件
 )
+set.objfn(  # 設定model的目標函數，函式說明請參閱附錄A
+  lprec,    # 此model物件
+  c(1,1.2)  # 目標函數各係數
+)
+# 給予各條件名稱
+rownames <- c('machine1', 'machine2','productA','productB')
+colnames <- c("productA", "productB") # 給予各係數名稱
+dimnames(lprec) <- list( # 將model變數欄及條件欄重新命名，方便閱讀
+  rownames,   
+  colnames
+)
+
 # 程式執行此可先print(lprec) 檢查model完整內容
 print(lprec)  # 將model變數欄及條件欄已重新命名
 solve(lprec)  # 將此model 求解，函式說明請參閱附錄A
