@@ -7,7 +7,7 @@ T <-matrix(   # 建構遞移矩陣物件，函式說明請參閱附錄 A
   byrow = FALSE
 )
 print(T)  # a .印出遞移矩陣
-X0 <- matrix(   # 建構初始人口分布狀態
+X0 <- matrix(   # 建構初始計程車分布狀態
   c(0.80,0.15,0.05),
   nrow =3,
   byrow =TRUE
