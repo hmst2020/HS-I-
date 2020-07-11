@@ -34,4 +34,4 @@ markovB <- new(    # 建構一新的物件
   transitionMatrix=T,  # 指定遞移矩陣
   name='A markovchain Object'  # 給予物件名稱
 )
-steadyStates(markovB)  # 計算穩定分布解
+steadyStates(markovB)  # 計算穩態分布解
