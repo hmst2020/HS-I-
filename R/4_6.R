@@ -7,14 +7,7 @@ A <- matrix( # 建立輸出入分析矩陣
   nrow = 3, 
   byrow=TRUE
 )
-I <- matrix( # 定義與上述A同為3x3的單位矩陣
-  c(1,0,0,
-    0,1,0,
-    0,0,1
-  ),
-  nrow = 3, 
-  byrow= TRUE
-)
+I <- diag(3) # 定義與上述A同為3x3的單位矩陣
 D <- matrix(  # 定義消費者的需求
   c(100,80,50),
   ncol = 1, 
