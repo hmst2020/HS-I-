@@ -1,3 +1,4 @@
+#  注意 !  配合台北市網站開放資料的GeoJson 格式變更，請改用2_1_v01.R 或 2_1_v021.R
 ####### 繪製台北市界地圖解法一###################
 library(geojsonio)  # 載入處理GeoJSON資料套件
 geojson.sp <- geojson_read( # 將下載之縣市GeoJSON圖資讀入變數
