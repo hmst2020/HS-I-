@@ -70,7 +70,7 @@ map.title <- "台北市土壤液化潛勢分布" # 圖表標題
 lgnd.title <- '嚴重程度' # 圖例標題
 class.name <- c('High','Medium','Low') # 圖例顏色對應(嚴重度)
 colors= c('red','#FFFF00','green') # 填色顏色對應
-g<-g+ # 將上述的g物件累加多邊形的土壤潛勢資料
+p<-g+ # 將上述的g物件累加多邊形的土壤潛勢資料
   geom_polygon( # 繪出多邊形資料
     data = soil.df, # 繪圖資料
     mapping=aes( # 指定data 的欄位
@@ -89,5 +89,5 @@ g<-g+ # 將上述的g物件累加多邊形的土壤潛勢資料
   labs(title=map.title,  # 設定圖表名稱及xy各軸標籤
        x ="經度", y = "緯度")+ 
   theme_bw() # 繪圖主題使用黑白
-print(g) # 印出圖
+print(p) # 印出圖
 ##############  end of 2_1_v02.R ##########
