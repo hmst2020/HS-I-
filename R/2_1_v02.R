@@ -55,7 +55,7 @@ print(g) # 印出台北縣市界地圖
 ############土壤液化分布標示於地圖上######################
 taipei.js <- geojson_read( # 將下載之縣市GeoJSON圖資讀入變數
   x='data/taipei_soil.geojson',
-  what = "sp" # 指定回傳Spatial class 之物件
+  what = "sp"   # 指定回傳SpatialPolygonsDataFrame 之物件
 )
 soil.df <- tidy( # 將sp物件轉換為data.frame物件
   taipei.js)  # 資料對象
