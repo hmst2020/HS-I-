@@ -9,11 +9,19 @@ dns.df <-as.data.frame(# 將dns.list轉成data frame資料物件
 names(dns.df) <- c('ym','count') # 重新命名dns.df
 head(dns.df) # 列出前幾筆
 tail(dns.df) # 列出最後幾筆
-y.df <- aggregate( # 使用聚集函式
-  formula=count~ substr(ym,1,4), # 依年度的數量處理
-  data=dns.df[dns.df$ym<202001,], # 截至本書出版年之前資料
-  FUN=sum # 依年度加總
-) 
+if (packageVersion('stats')<'4.2.0'){   # R 版本4.2.0以後引數formula 改為x
+  y.df <- aggregate( # 使用聚集函式
+    formula=count~ substr(ym,1,4), # 依年度的數量處理
+    data=dns.df[dns.df$ym<202001,], # 截至本書出版年之前資料
+    FUN=sum # 依年度加總
+  ) 
+}else{
+  y.df <- aggregate( # 使用聚集函式
+    x=count~ substr(ym,1,4), # 依年度的數量處理
+    data=dns.df[dns.df$ym<202001,], # 截至本書出版年之前資料
+    FUN=sum # 依年度加總
+  ) 
+}
 names(y.df) <- c('year','count')
 library(ggplot2)
 p<-ggplot( # 產生繪圖物件
